@@ -11,7 +11,6 @@ const total = subtotal + gst + pst + data.reserveCents;
 const gap = total - data.budgetCents;
 const item = row => data.items.find(entry => entry.sourceRow === row);
 const withTax = cents => cents + Math.round(cents * data.gstPercent / 100) + Math.round(cents * data.pstPercent / 100);
-const extraDesk = item(18).unitCents + item(19).unitCents + item(20).unitCents;
 const usedSubtotal = subtotal - item(16).unitCents + data.usedSparkCents;
 const usedTotal = withTax(usedSubtotal) + data.reserveCents;
 
@@ -134,10 +133,9 @@ const html = `<!doctype html>
 
     <section id="alternatives" class="alternatives" aria-labelledby="alternatives-title">
       <p class="eyebrow">04 / Optional alternatives</p><h2 id="alternatives-title">For consideration only</h2>
-      <p>These options are not included in the requested total above.</p>
+      <p>This option is not included in the requested total above.</p>
       <div class="alternatives-grid">
         <article><h3>Used DGX Spark instead of new</h3><p>The workbook records a used “Like New” offer from Canada Direct on Amazon, checked 24 September, at <strong>${money(data.usedSparkCents)} before tax</strong>.</p><p>This would save ${money(item(16).unitCents - data.usedSparkCents)} before tax and bring the estimated request to <strong>${money(usedTotal)}</strong>, including tax and the reserve. That leaves ${money(data.budgetCents - usedTotal)} within the hardware budget.</p><p>Confirm that the offer, exact configuration, condition, and warranty are still suitable before substituting.</p><p>${link(data.usedSparkUrl, 'View Amazon listing')}</p></article>
-        <article><h3>One additional Mac mini desk</h3><p>An extra Mac mini of the same configuration, Dell monitor, and Pebble 2 keyboard and mouse would cost <strong>${money(extraDesk)} before tax</strong>, or <strong>${money(withTax(extraDesk))} including estimated tax</strong>.</p><p>This would bring the request to ${money(total + withTax(extraDesk))}, which is ${money(total + withTax(extraDesk) - data.budgetCents)} above budget. No additional camera or microphone is included; the monitor provides audio.</p><p>If a suitable existing monitor and cable are available for this optional fifth computer, the extra desk would cost ${money(withTax(item(18).unitCents + item(20).unitCents))} including tax.</p><p>Use the Mac mini, Dell, and Logitech links in the equipment list.</p></article>
       </div>
       <p class="source-note">The workbook also considered reusing classroom displays. This request includes four new monitors as required, so that option is not applied.</p>
     </section>
@@ -154,4 +152,4 @@ await writeFile(new URL('index.html', outputDirectory), html);
 for (const asset of ['styles.css', 'favicon.svg']) {
   await copyFile(new URL(asset, import.meta.url), new URL(asset, outputDirectory));
 }
-console.log(JSON.stringify({ subtotal, gst, pst, total, gap, usedTotal, extraDeskWithTax: withTax(extraDesk) }));
+console.log(JSON.stringify({ subtotal, gst, pst, total, gap, usedTotal }));

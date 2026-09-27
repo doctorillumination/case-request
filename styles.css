@@ -72,6 +72,7 @@ tfoot { font-size: 15px; }
 .alternatives > p:not(.eyebrow) { color: var(--muted); font-size: 14px; }
 .alternatives-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 24px; }
 .alternatives-grid article { border-top: 2px solid #b6c5b9; padding-top: 20px; }
+.alternatives-grid article:only-child { grid-column: 1 / -1; max-width: 760px; }
 .alternatives-grid h3 { font-size: 17px; }
 .alternatives-grid p { font-size: 14px; }
 .source-note { margin-top: 18px; }
