@@ -101,7 +101,6 @@ const html = `<!doctype html>
 
     <section id="equipment" aria-labelledby="equipment-title">
       <div class="section-heading"><div><p class="eyebrow">01 / Equipment</p><h2 id="equipment-title">What we’re requesting</h2></div><p>Unit and line prices are before tax.</p></div>
-      <p class="change-note"><strong>Four monitors included.</strong> All four Dell monitors have built-in speakers. Separate desktop speakers have been removed, saving ${money(withTax(data.removedSpeakersCents))} including estimated tax.</p>
       <table class="equipment-table">
         <caption class="visually-hidden">Hardware purchase list, quantities, estimated prices and supplier links</caption>
         <thead><tr><th scope="col">Item &amp; classroom use</th><th scope="col" class="qty">Qty</th><th scope="col" class="number">Each</th><th scope="col" class="number">Line total</th></tr></thead>
