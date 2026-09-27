@@ -94,7 +94,7 @@ const html = `<!doctype html>
 
     <section class="summary" aria-label="Budget at a glance">
       <div class="summary-main"><span class="metric-label">Total requested</span><strong>${money(total)}</strong><span>Including estimated tax and shipping reserve</span></div>
-      <div class="summary-detail"><span class="metric-label">Budget in workbook</span><strong>${money(data.budgetCents)}</strong><span class="over-budget">${money(gap)} above budget</span></div>
+      <div class="summary-detail"><span class="metric-label">Hardware budget</span><strong>${money(data.budgetCents)}</strong><span class="over-budget">${money(gap)} above budget</span></div>
     </section>
 
     <nav class="section-nav" aria-label="On this page"><a href="#equipment">Equipment &amp; links</a><a href="#budget">Cost breakdown</a><a href="#purchasing">Purchasing notes</a><a href="#alternatives">Optional alternatives</a></nav>
@@ -119,7 +119,7 @@ const html = `<!doctype html>
         <div><dt>Hardware including tax</dt><dd>${money(subtotal + gst + pst)}</dd></div>
         <div><dt>Shipping &amp; incidental reserve</dt><dd>${money(data.reserveCents)}</dd></div>
         <div class="cost-total"><dt>Total requested</dt><dd>${money(total)}</dd></div>
-        <div><dt>Budget in workbook</dt><dd>${money(data.budgetCents)}</dd></div>
+        <div><dt>Hardware budget</dt><dd>${money(data.budgetCents)}</dd></div>
         <div class="cost-gap"><dt>Additional funding required</dt><dd>${money(gap)}</dd></div>
       </dl>
     </section>
@@ -137,12 +137,12 @@ const html = `<!doctype html>
       <p class="eyebrow">04 / Optional alternatives</p><h2 id="alternatives-title">For consideration only</h2>
       <p>These options are not included in the requested total above.</p>
       <div class="alternatives-grid">
-        <article><h3>Used DGX Spark instead of new</h3><p>The workbook records a used “Like New” offer from Canada Direct on Amazon, checked 24 September, at <strong>${money(data.usedSparkCents)} before tax</strong>.</p><p>This would save ${money(item(16).unitCents - data.usedSparkCents)} before tax and bring the estimated request to <strong>${money(usedTotal)}</strong>, including tax and the reserve. That leaves ${money(data.budgetCents - usedTotal)} within the workbook budget.</p><p>Confirm that the offer, exact configuration, condition, and warranty are still suitable before substituting.</p><p>${link(data.usedSparkUrl, 'View Amazon listing')}</p></article>
+        <article><h3>Used DGX Spark instead of new</h3><p>The workbook records a used “Like New” offer from Canada Direct on Amazon, checked 24 September, at <strong>${money(data.usedSparkCents)} before tax</strong>.</p><p>This would save ${money(item(16).unitCents - data.usedSparkCents)} before tax and bring the estimated request to <strong>${money(usedTotal)}</strong>, including tax and the reserve. That leaves ${money(data.budgetCents - usedTotal)} within the hardware budget.</p><p>Confirm that the offer, exact configuration, condition, and warranty are still suitable before substituting.</p><p>${link(data.usedSparkUrl, 'View Amazon listing')}</p></article>
         <article><h3>One additional Mac mini desk</h3><p>An extra Mac mini of the same configuration, Dell monitor, and Pebble 2 keyboard and mouse would cost <strong>${money(extraDesk)} before tax</strong>, or <strong>${money(withTax(extraDesk))} including estimated tax</strong>.</p><p>This would bring the request to ${money(total + withTax(extraDesk))}, which is ${money(total + withTax(extraDesk) - data.budgetCents)} above budget. No additional camera or microphone is included; the monitor provides audio.</p><p>If a suitable existing monitor and cable are available for this optional fifth computer, the extra desk would cost ${money(withTax(item(18).unitCents + item(20).unitCents))} including tax.</p><p>Use the Mac mini, Dell, and Logitech links in the equipment list.</p></article>
       </div>
       <p class="source-note">The workbook also considered reusing classroom displays. This request includes four new monitors as required, so that option is not applied.</p>
     </section>
-    <footer><p>360 AIX · Shawnigan · Hardware purchasing request</p><p>Based on the supplied hardware workbook, revised ${escape(data.sourceDate)}. Monitor allocation and speaker costs updated ${escape(data.revisionDate)}.</p></footer>
+    <footer><p>360 AIX · Shawnigan · Hardware purchasing request</p><p>Based on the supplied hardware workbook, revised ${escape(data.sourceDate)}. Budget, monitor allocation, and speaker costs updated ${escape(data.revisionDate)}.</p></footer>
   </main>
 </body>
 </html>`;
