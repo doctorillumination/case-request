@@ -1,0 +1,6 @@
+# If a dashboard command overrides the asset directory to the repository root,
+# publish only these three website files.
+*
+!index.html
+!styles.css
+!favicon.svg

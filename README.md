@@ -29,3 +29,17 @@ The build uses integer cents and rounds GST and PST separately. Commit the gener
 ## Hosting
 
 Published at https://doctorillumination.github.io/case-request/ using GitHub Pages from `main` at `/`. The `.nojekyll` file prevents Jekyll processing.
+
+### Cloudflare Workers
+
+The build also creates `dist/` containing only `index.html`, `styles.css`, and `favicon.svg`. `wrangler.jsonc` points Cloudflare at this directory and automatically runs the build before deployment.
+
+Use these Workers Builds settings:
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Root directory: repository root
+
+Remove any `--assets .` override from the deploy command. A root `.assetsignore` also protects existing dashboard commands that still use that override by allowing only the three website files. Dependencies, build scripts, and repository metadata are never website assets.
+
+For Cloudflare Pages instead of Workers, use `npm run build` with `dist` as the build output directory.

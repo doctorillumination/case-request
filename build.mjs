@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 
 const data = JSON.parse(await readFile(new URL('./budget.json', import.meta.url), 'utf8'));
 const money = cents => new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(cents / 100);
@@ -148,4 +148,11 @@ const html = `<!doctype html>
 </html>`;
 
 await writeFile(new URL('./index.html', import.meta.url), html);
+const outputDirectory = new URL('./dist/', import.meta.url);
+await rm(outputDirectory, { recursive: true, force: true });
+await mkdir(outputDirectory, { recursive: true });
+await writeFile(new URL('index.html', outputDirectory), html);
+for (const asset of ['styles.css', 'favicon.svg']) {
+  await copyFile(new URL(asset, import.meta.url), new URL(asset, outputDirectory));
+}
 console.log(JSON.stringify({ subtotal, gst, pst, total, gap, usedTotal, extraDeskWithTax: withTax(extraDesk) }));
