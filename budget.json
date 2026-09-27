@@ -1,0 +1,87 @@
+{
+  "source": "360-AIX-hardware-purchasing-plan.xlsx",
+  "sourceDate": "25 September 2026",
+  "revisionDate": "27 September 2026",
+  "currency": "CAD",
+  "budgetCents": 2900000,
+  "gstPercent": 5.0,
+  "pstPercent": 7,
+  "reserveCents": 60000,
+  "removedSpeakersCents": 6998,
+  "usedSparkCents": 799800,
+  "usedSparkUrl": "https://www.amazon.ca/dp/B0FWJ16CCH",
+  "items": [
+    {
+      "sourceRow": 16,
+      "name": "NVIDIA DGX Spark, 128GB / 4TB",
+      "quantity": 1,
+      "unitCents": 1049900,
+      "seller": "Canada Computers",
+      "sourceAvailability": "Available to ship",
+      "url": "https://www.canadacomputers.com/en/workstations/279129/nvidia-dgx-spark-ai-mini-pc-940-54242-0000-000-940-54242-0000-000.html"
+    },
+    {
+      "sourceRow": 17,
+      "name": "Mac Studio, M5 Max 18CPU / 40GPU, 128GB / 2TB",
+      "quantity": 1,
+      "unitCents": 780900,
+      "seller": "Apple Canada",
+      "sourceAvailability": "Education benchmark",
+      "url": "https://www.apple.com/ca-edu/shop/buy-mac/mac-studio"
+    },
+    {
+      "sourceRow": 18,
+      "name": "Mac mini for Xcode, M6 12CPU / 12GPU, 32GB / 1TB",
+      "quantity": 2,
+      "unitCents": 238400,
+      "seller": "Apple Canada",
+      "sourceAvailability": "Education benchmark",
+      "url": "https://www.apple.com/ca-edu/shop/buy-mac/mac-mini"
+    },
+    {
+      "sourceRow": 19,
+      "name": "Dell S2725QC 27-inch 4K USB-C display",
+      "quantity": 4,
+      "unitCents": 48999,
+      "seller": "Dell Canada",
+      "sourceAvailability": "Orderable",
+      "url": "https://www.dell.com/en-ca/shop/monitors/apd/dell-27-plus-4k-usb-c-monitor-s2725qc/s2725qc_monitor/-"
+    },
+    {
+      "sourceRow": 20,
+      "name": "Logitech Pebble 2 keyboard and mouse combo",
+      "quantity": 3,
+      "unitCents": 8999,
+      "seller": "Logitech Canada",
+      "sourceAvailability": "In stock",
+      "url": "https://www.logitech.com/en-ca/shop/p/pebble-2-keyboard-mouse-combo"
+    },
+    {
+      "sourceRow": 21,
+      "name": "Logitech Brio 300 USB-C webcam",
+      "quantity": 2,
+      "unitCents": 8999,
+      "seller": "Logitech Canada",
+      "sourceAvailability": "In stock",
+      "url": "https://www.logitech.com/en-ca/shop/p/brio-300-webcam"
+    },
+    {
+      "sourceRow": 22,
+      "name": "Logitech G Yeti Orb USB microphone",
+      "quantity": 2,
+      "unitCents": 8999,
+      "seller": "Logitech G Canada",
+      "sourceAvailability": "In stock",
+      "url": "https://www.logitechg.com/en-ca/shop/p/yeti-orb-gaming-microphone"
+    },
+    {
+      "sourceRow": 25,
+      "name": "Kingston XS1000 2TB external SSD",
+      "quantity": 2,
+      "unitCents": 46999,
+      "seller": "Canada Computers",
+      "sourceAvailability": "Available to ship",
+      "url": "https://www.canadacomputers.com/en/external-ssds/245906/kingston-xs1000-2tb-usb-3-2-gen-2-external-ssd-sxs1000-2000g.html"
+    }
+  ]
+}

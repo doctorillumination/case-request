@@ -1,0 +1,7 @@
+{
+  "name": "360-aix-budget-request",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple school purchasing request for the 360 AIX classroom.",
+  "scripts": { "build": "node build.mjs" }
+}
