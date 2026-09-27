@@ -9,8 +9,8 @@ Based on `360-AIX-hardware-purchasing-plan.xlsx`, revised 25 September 2026. Har
 - Four computers, four new Dell S2725QC monitors, and four keyboard and mouse combos.
 - Separate Creative Pebble speakers removed because the Dell monitors include speakers.
 - Exact workbook configurations, planning prices, supplier links, and purchasing notes retained.
-- Totals recalculated from line items, with 5% GST, 7% PST, and the $600 reserve.
-- The hardware budget is $30,000, as requested on 27 September 2026, replacing the workbook's $29,000 figure. With the requested fourth keyboard and mouse combo, the request is $30,499.36, leaving a $499.36 shortfall.
+- Totals recalculated from line items, with 5% GST and 7% PST. The $600 shipping and incidental reserve was removed as requested.
+- The hardware budget is $30,000, as requested on 27 September 2026, replacing the workbook's $29,000 figure. With four keyboard and mouse combos and no shipping reserve, the request is $29,899.36, leaving $100.64 in the budget.
 - The used-Spark alternative is separate from the main request. Reusing displays is not applied to the four required monitors. The optional additional Mac mini desk was removed as requested.
 
 Prices are dated workbook estimates, not refreshed quotations. Dell's built-in speakers were verified against its product page on 27 September 2026. Apple configurations and public education prices need an institutional quote.

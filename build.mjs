@@ -7,18 +7,18 @@ const link = (url, label) => `<a href="${escape(url)}">${escape(label)} <span ar
 const subtotal = data.items.reduce((sum, item) => sum + item.quantity * item.unitCents, 0);
 const gst = Math.round(subtotal * data.gstPercent / 100);
 const pst = Math.round(subtotal * data.pstPercent / 100);
-const total = subtotal + gst + pst + data.reserveCents;
+const total = subtotal + gst + pst;
 const gap = total - data.budgetCents;
 const item = row => data.items.find(entry => entry.sourceRow === row);
 const withTax = cents => cents + Math.round(cents * data.gstPercent / 100) + Math.round(cents * data.pstPercent / 100);
 const usedSubtotal = subtotal - item(16).unitCents + data.usedSparkCents;
-const usedTotal = withTax(usedSubtotal) + data.reserveCents;
+const usedTotal = withTax(usedSubtotal);
 
 const descriptions = {
   16: {
     title: 'NVIDIA DGX Spark', spec: '128GB memory · 4TB storage',
     purpose: 'A shared computer for local large language model (LLM) development, running and testing models on the classroom network.',
-    note: 'New unit. SKU 940-54242-0000-000. One of the four new displays is allocated to this computer; an HDMI cable can come from the incidental reserve.'
+    note: 'New unit. SKU 940-54242-0000-000. One of the four new displays is allocated to this computer and connects via HDMI.'
   },
   17: {
     title: 'Apple Mac Studio', spec: 'M5 Max · 18-core CPU / 40-core GPU · 128GB memory · 2TB storage',
@@ -92,8 +92,8 @@ const html = `<!doctype html>
     </section>
 
     <section class="summary" aria-label="Budget at a glance">
-      <div class="summary-main"><span class="metric-label">Total requested</span><strong>${money(total)}</strong><span>Including estimated tax and shipping reserve</span></div>
-      <div class="summary-detail"><span class="metric-label">Hardware budget</span><strong>${money(data.budgetCents)}</strong><span class="over-budget">${money(gap)} above budget</span></div>
+      <div class="summary-main"><span class="metric-label">Total requested</span><strong>${money(total)}</strong><span>Including estimated tax</span></div>
+      <div class="summary-detail"><span class="metric-label">Hardware budget</span><strong>${money(data.budgetCents)}</strong><span class="${gap > 0 ? 'over-budget' : 'within-budget'}">${money(Math.abs(gap))} ${gap > 0 ? 'above budget' : 'remaining in budget'}</span></div>
     </section>
 
     <nav class="section-nav" aria-label="On this page"><a href="#equipment">Equipment &amp; links</a><a href="#budget">Cost breakdown</a><a href="#purchasing">Purchasing notes</a><a href="#alternatives">Optional alternatives</a></nav>
@@ -109,16 +109,14 @@ const html = `<!doctype html>
     </section>
 
     <section id="budget" class="budget-section" aria-labelledby="budget-title">
-      <div><p class="eyebrow">02 / Budget</p><h2 id="budget-title">Cost breakdown</h2><p>Uses the workbook’s 5% GST and 7% BC PST assumptions, with no tax recovery assumed.</p><p>The $600 reserve covers shipping, environmental fees, cables, mounts, and minor assembly supplies, including any tax on those costs.</p></div>
+      <div><p class="eyebrow">02 / Budget</p><h2 id="budget-title">Cost breakdown</h2><p>Uses the workbook’s 5% GST and 7% BC PST assumptions, with no tax recovery assumed.</p></div>
       <dl class="cost-list">
         <div><dt>Hardware before tax</dt><dd>${money(subtotal)}</dd></div>
         <div><dt>GST (${data.gstPercent}%)</dt><dd>${money(gst)}</dd></div>
         <div><dt>BC PST (${data.pstPercent}%)</dt><dd>${money(pst)}</dd></div>
-        <div><dt>Hardware including tax</dt><dd>${money(subtotal + gst + pst)}</dd></div>
-        <div><dt>Shipping &amp; incidental reserve</dt><dd>${money(data.reserveCents)}</dd></div>
         <div class="cost-total"><dt>Total requested</dt><dd>${money(total)}</dd></div>
         <div><dt>Hardware budget</dt><dd>${money(data.budgetCents)}</dd></div>
-        <div class="cost-gap"><dt>Additional funding required</dt><dd>${money(gap)}</dd></div>
+        <div class="${gap > 0 ? 'cost-gap' : 'cost-remaining'}"><dt>${gap > 0 ? 'Additional funding required' : 'Budget remaining'}</dt><dd>${money(Math.abs(gap))}</dd></div>
       </dl>
     </section>
 
@@ -126,7 +124,7 @@ const html = `<!doctype html>
       <p class="eyebrow">03 / Purchasing</p><h2 id="purchasing-title">Notes for ordering</h2>
       <div class="notes-grid">
         <div><h3>School pricing</h3><p>Apple prices and configurations are the workbook’s public education benchmarks from ${escape(data.sourceDate)}. Obtain an institutional quote before ordering; the individual education store is not the school purchasing route.</p><p>${link('https://ecommerce.apple.com/asb2bstorefront/fys?country=CA&language=EN', 'Apple Education Institutions')}<br>${link('https://www.apple.com/ca/contact/', 'Apple purchasing contact')}<br>${link('https://www.apple.com/ca-edu/shop/help/policies', 'Apple education purchase policies')}</p></div>
-        <div><h3>Connections &amp; setup</h3><p>Connect the Mac displays with the included USB-C cables. Plug the Yeti microphones into the Dell USB-A hubs and the webcams directly into the minis. Use HDMI for the Spark display. Reserve funds cover any additional cables or adapters.</p><p>Four keyboard and mouse sets equip all four computers. The Spark also connects to the existing classroom network for shared access.</p></div>
+        <div><h3>Connections &amp; setup</h3><p>Connect the Mac displays with the included USB-C cables. Plug the Yeti microphones into the Dell USB-A hubs and the webcams directly into the minis. Use HDMI for the Spark display.</p><p>Four keyboard and mouse sets equip all four computers. The Spark also connects to the existing classroom network for shared access.</p></div>
         <div><h3>Price &amp; availability</h3><p>All prices are planning estimates from the supplied workbook, revised ${escape(data.sourceDate)}. At that check, the non-Apple items were listed as in stock, orderable, or available to ship. Confirm prices, stock, shipping, and exact configurations with suppliers before ordering.</p><p>Dell’s built-in speakers were verified on ${escape(data.revisionDate)}. ${link(item(19).url, 'Dell specifications')}</p><p>${link('https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html', 'GST and PST reference')}</p></div>
       </div>
     </section>
@@ -135,7 +133,7 @@ const html = `<!doctype html>
       <p class="eyebrow">04 / Optional alternatives</p><h2 id="alternatives-title">For consideration only</h2>
       <p>This option is not included in the requested total above.</p>
       <div class="alternatives-grid">
-        <article><h3>Used DGX Spark instead of new</h3><p>The workbook records a used “Like New” offer from Canada Direct on Amazon, checked 24 September, at <strong>${money(data.usedSparkCents)} before tax</strong>.</p><p>This would save ${money(item(16).unitCents - data.usedSparkCents)} before tax and bring the estimated request to <strong>${money(usedTotal)}</strong>, including tax and the reserve. That leaves ${money(data.budgetCents - usedTotal)} within the hardware budget.</p><p>Confirm that the offer, exact configuration, condition, and warranty are still suitable before substituting.</p><p>${link(data.usedSparkUrl, 'View Amazon listing')}</p></article>
+        <article><h3>Used DGX Spark instead of new</h3><p>The workbook records a used “Like New” offer from Canada Direct on Amazon, checked 24 September, at <strong>${money(data.usedSparkCents)} before tax</strong>.</p><p>This would save ${money(item(16).unitCents - data.usedSparkCents)} before tax and bring the estimated request to <strong>${money(usedTotal)}</strong>, including tax. That leaves ${money(data.budgetCents - usedTotal)} within the hardware budget.</p><p>Confirm that the offer, exact configuration, condition, and warranty are still suitable before substituting.</p><p>${link(data.usedSparkUrl, 'View Amazon listing')}</p></article>
       </div>
       <p class="source-note">The workbook also considered reusing classroom displays. This request includes four new monitors as required, so that option is not applied.</p>
     </section>

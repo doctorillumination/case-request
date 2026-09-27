@@ -30,6 +30,7 @@ main { max-width: 1136px; padding: 0 28px; margin: 0 auto; }
 .summary-detail strong { font-size: 29px; margin: 4px 0; }
 .summary-main > span:last-child { color: #dae8e1; font-size: 13px; }
 .over-budget { font-size: 14px; color: #8c4b24; font-weight: 600; }
+.within-budget { font-size: 14px; color: var(--accent); font-weight: 600; }
 .section-nav { display: flex; gap: 28px; flex-wrap: wrap; padding: 22px 0; margin-bottom: 28px; border-bottom: 1px solid var(--line); font-size: 14px; }
 .section-nav a { color: var(--muted); text-decoration: none; }
 .section-nav a:hover { color: var(--accent); text-decoration: underline; }
@@ -64,6 +65,7 @@ tfoot { font-size: 15px; }
 .cost-list dd { margin: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .cost-total { font-weight: 700; font-size: 18px; color: var(--green); }
 .cost-gap { color: #8c4b24; font-weight: 650; }
+.cost-remaining { color: var(--accent); font-weight: 650; }
 .notes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 26px; }
 .notes-grid h3 { font-size: 16px; }
 .notes-grid p { color: var(--muted); font-size: 14px; }
