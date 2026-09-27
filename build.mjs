@@ -38,8 +38,8 @@ const descriptions = {
   },
   20: {
     title: 'Logitech Pebble 2 keyboard and mouse', spec: 'Bluetooth combo · Tonal Rose listing',
-    purpose: 'Three keyboard and mouse sets, one for the Mac Studio and one for each Mac mini.',
-    note: 'The Spark uses shared classroom input devices for setup and is accessed over the network.'
+    purpose: 'Four keyboard and mouse sets, one for the DGX Spark, one for the Mac Studio, and one for each Mac mini.',
+    note: 'Each of the four computers has its own keyboard and mouse.'
   },
   21: {
     title: 'Logitech Brio 300 webcams', spec: '1080p · USB-C · Graphite',
@@ -128,7 +128,7 @@ const html = `<!doctype html>
       <p class="eyebrow">03 / Purchasing</p><h2 id="purchasing-title">Notes for ordering</h2>
       <div class="notes-grid">
         <div><h3>School pricing</h3><p>Apple prices and configurations are the workbook’s public education benchmarks from ${escape(data.sourceDate)}. Obtain an institutional quote before ordering; the individual education store is not the school purchasing route.</p><p>${link('https://ecommerce.apple.com/asb2bstorefront/fys?country=CA&language=EN', 'Apple Education Institutions')}<br>${link('https://www.apple.com/ca/contact/', 'Apple purchasing contact')}<br>${link('https://www.apple.com/ca-edu/shop/help/policies', 'Apple education purchase policies')}</p></div>
-        <div><h3>Connections &amp; setup</h3><p>Connect the Mac displays with the included USB-C cables. Plug the Yeti microphones into the Dell USB-A hubs and the webcams directly into the minis. Use HDMI for the Spark display. Reserve funds cover any additional cables or adapters.</p><p>Three keyboard and mouse sets equip the three Macs. The Spark uses the existing classroom network and shared input devices for setup.</p></div>
+        <div><h3>Connections &amp; setup</h3><p>Connect the Mac displays with the included USB-C cables. Plug the Yeti microphones into the Dell USB-A hubs and the webcams directly into the minis. Use HDMI for the Spark display. Reserve funds cover any additional cables or adapters.</p><p>Four keyboard and mouse sets equip all four computers. The Spark also connects to the existing classroom network for shared access.</p></div>
         <div><h3>Price &amp; availability</h3><p>All prices are planning estimates from the supplied workbook, revised ${escape(data.sourceDate)}. At that check, the non-Apple items were listed as in stock, orderable, or available to ship. Confirm prices, stock, shipping, and exact configurations with suppliers before ordering.</p><p>Dell’s built-in speakers were verified on ${escape(data.revisionDate)}. ${link(item(19).url, 'Dell specifications')}</p><p>${link('https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html', 'GST and PST reference')}</p></div>
       </div>
     </section>
@@ -142,7 +142,7 @@ const html = `<!doctype html>
       </div>
       <p class="source-note">The workbook also considered reusing classroom displays. This request includes four new monitors as required, so that option is not applied.</p>
     </section>
-    <footer><p>360 AIX · Shawnigan · Hardware purchasing request</p><p>Based on the supplied hardware workbook, revised ${escape(data.sourceDate)}. Budget, monitor allocation, and speaker costs updated ${escape(data.revisionDate)}.</p></footer>
+    <footer><p>360 AIX · Shawnigan · Hardware purchasing request</p><p>Based on the supplied hardware workbook, revised ${escape(data.sourceDate)}. Budget, monitors, keyboard and mouse quantities, and speaker costs updated ${escape(data.revisionDate)}.</p></footer>
   </main>
 </body>
 </html>`;
