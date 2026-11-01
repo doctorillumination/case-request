@@ -15,7 +15,7 @@ const descriptions = {
   16: {
     title: 'Microsoft Surface Laptop Ultra', spec: 'NVIDIA RTX Spark N1X · 20-core CPU / 6,144-core GPU · 128GB unified memory · 1TB SSD',
     purpose: 'A portable computer for local large language model (LLM) development, running and testing models on the classroom network.',
-    note: 'Full-core configuration in Nightfall, with an English keyboard and Windows 11 Pro. Microsoft Canada price checked 1 November 2026, without trade-in credit or optional protection. One external Dell display and a keyboard and mouse set are allocated to this laptop.'
+    note: 'Full-core configuration in Nightfall, with an English keyboard and Windows 11 Pro. Microsoft Canada price checked 1 November 2026, without trade-in credit or optional protection. Uses its built-in display, keyboard, and trackpad.'
   },
   17: {
     title: 'Apple Mac Studio', spec: 'M5 Max · 18-core CPU / 40-core GPU · 128GB memory · 2TB storage',
@@ -24,18 +24,18 @@ const descriptions = {
   },
   18: {
     title: 'Apple Mac mini', spec: 'M6 · 12-core CPU / 12-core GPU · 32GB memory · 1TB storage',
-    purpose: 'Two student workstations for iPhone app development with Xcode, including building and testing apps in the iPhone simulator.',
+    purpose: 'Three student workstations for iPhone app development with Xcode, including building and testing apps in the iPhone simulator.',
     note: 'Apple education price benchmark; school quote required. Standard 2.5Gb Ethernet. Each mini receives a new display and a keyboard and mouse.'
   },
   19: {
     title: 'Dell 27-inch 4K monitors', spec: 'S2725QC · USB-C · 120Hz · height-adjustable IPS display',
-    purpose: 'Four monitors, one for the Surface Laptop Ultra, one for the Mac Studio, and one for each Mac mini.',
+    purpose: 'Four monitors, one for the Mac Studio and one for each of the three Mac minis.',
     note: 'Each has two built-in 5W speakers, so separate speakers are removed. Includes a USB-C cable and a USB hub for peripherals.'
   },
   20: {
     title: 'Logitech Pebble 2 keyboard and mouse', spec: 'Bluetooth combo · Tonal Rose listing',
-    purpose: 'Four keyboard and mouse sets, one for the Surface Laptop Ultra, one for the Mac Studio, and one for each Mac mini.',
-    note: 'Each of the four computers has its own keyboard and mouse.'
+    purpose: 'Four keyboard and mouse sets, one for the Mac Studio and one for each of the three Mac minis.',
+    note: 'Each Mac has its own keyboard and mouse. The Surface Laptop Ultra uses its built-in keyboard and trackpad.'
   },
   21: {
     title: 'Logitech Brio 300 webcams', spec: '1080p · USB-C · Graphite',
@@ -69,7 +69,7 @@ const html = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="360 AIX classroom hardware request for Shawnigan: four computers, four monitors, project peripherals, costs, and purchase links.">
+  <meta name="description" content="360 AIX classroom hardware request for Shawnigan: five computers, four monitors for the Macs, project peripherals, costs, and purchase links.">
   <meta name="theme-color" content="#183b36">
   <title>360 AIX | Hardware request</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -84,7 +84,7 @@ const html = `<!doctype html>
     <section class="intro" aria-labelledby="page-title">
       <p class="eyebrow">Classroom equipment · November 2026</p>
       <h1 id="page-title">360 AIX hardware request</h1>
-      <p class="lead">A Mac Studio and Surface Laptop Ultra with NVIDIA RTX Spark for local large language model development, two Mac minis for iPhone development with Xcode, and four monitors with shared project equipment.</p>
+      <p class="lead">A Mac Studio and Surface Laptop Ultra with NVIDIA RTX Spark for local large language model development, three Mac minis for iPhone development with Xcode, and four monitors for the Macs with shared project equipment.</p>
       <p class="date">Updated ${escape(data.revisionDate)}. All amounts in Canadian dollars.</p>
     </section>
 
@@ -121,12 +121,12 @@ const html = `<!doctype html>
       <p class="eyebrow">03 / Purchasing</p><h2 id="purchasing-title">Notes for ordering</h2>
       <div class="notes-grid">
         <div><h3>School pricing</h3><p>Apple prices and configurations are the workbook’s public education benchmarks from ${escape(data.sourceDate)}. Obtain an institutional quote before ordering; the individual education store is not the school purchasing route.</p><p>${link('https://ecommerce.apple.com/asb2bstorefront/fys?country=CA&language=EN', 'Apple Education Institutions')}<br>${link('https://www.apple.com/ca/contact/', 'Apple purchasing contact')}<br>${link('https://www.apple.com/ca-edu/shop/help/policies', 'Apple education purchase policies')}</p></div>
-        <div><h3>Connections &amp; setup</h3><p>Connect the Mac displays with the included USB-C cables. Plug the Yeti microphones into the Dell USB-A hubs and the webcams directly into the minis. Use HDMI for the Surface Laptop Ultra’s external display.</p><p>Four keyboard and mouse sets equip all four computers. The Surface Laptop Ultra can connect to the existing classroom Wi-Fi for shared access.</p></div>
+        <div><h3>Connections &amp; setup</h3><p>Connect the four Mac displays with the included USB-C cables. Plug the Yeti microphones into the Dell USB-A hubs and the webcams directly into the minis.</p><p>Four keyboard and mouse sets equip the Mac Studio and three Mac minis. The Surface Laptop Ultra uses its built-in display, keyboard, and trackpad, and can connect to the existing classroom Wi-Fi for shared access.</p></div>
         <div><h3>Price &amp; availability</h3><p>The Surface Laptop Ultra configuration is listed at ${money(item(16).unitCents)} before tax in Microsoft Canada’s configurator, checked ${escape(item(16).priceCheckedDate)}. All other prices remain the workbook’s planning estimates from ${escape(data.sourceDate)}. Confirm prices, stock, shipping, and exact configurations with suppliers before ordering.</p><p>Dell’s built-in speakers were verified on 27 September 2026. ${link(item(19).url, 'Dell specifications')}</p><p>${link('https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html', 'GST and PST reference')}</p></div>
       </div>
     </section>
 
-    <footer><p>360 AIX · Shawnigan · Hardware purchasing request</p><p>Based on the supplied hardware workbook, revised ${escape(data.sourceDate)}, with subsequent requested changes. Surface Laptop Ultra configuration and budget updated ${escape(data.revisionDate)}.</p></footer>
+    <footer><p>360 AIX · Shawnigan · Hardware purchasing request</p><p>Based on the supplied hardware workbook, revised ${escape(data.sourceDate)}, with subsequent requested changes. Hardware quantities, Surface Laptop Ultra configuration, and budget updated ${escape(data.revisionDate)}.</p></footer>
   </main>
 </body>
 </html>`;
