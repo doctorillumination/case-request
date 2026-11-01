@@ -10,15 +10,12 @@ const pst = Math.round(subtotal * data.pstPercent / 100);
 const total = subtotal + gst + pst;
 const gap = total - data.budgetCents;
 const item = row => data.items.find(entry => entry.sourceRow === row);
-const withTax = cents => cents + Math.round(cents * data.gstPercent / 100) + Math.round(cents * data.pstPercent / 100);
-const usedSubtotal = subtotal - item(16).unitCents + data.usedSparkCents;
-const usedTotal = withTax(usedSubtotal);
 
 const descriptions = {
   16: {
-    title: 'NVIDIA DGX Spark', spec: '128GB memory · 4TB storage',
-    purpose: 'A shared computer for local large language model (LLM) development, running and testing models on the classroom network.',
-    note: 'New unit. SKU 940-54242-0000-000. One of the four new displays is allocated to this computer and connects via HDMI.'
+    title: 'Microsoft Surface Laptop Ultra', spec: 'NVIDIA RTX Spark N1X · 20-core CPU / 6,144-core GPU · 128GB unified memory · 1TB SSD',
+    purpose: 'A portable computer for local large language model (LLM) development, running and testing models on the classroom network.',
+    note: 'Full-core configuration in Nightfall, with an English keyboard and Windows 11 Pro. Microsoft Canada price checked 1 November 2026, without trade-in credit or optional protection. One external Dell display and a keyboard and mouse set are allocated to this laptop.'
   },
   17: {
     title: 'Apple Mac Studio', spec: 'M5 Max · 18-core CPU / 40-core GPU · 128GB memory · 2TB storage',
@@ -32,12 +29,12 @@ const descriptions = {
   },
   19: {
     title: 'Dell 27-inch 4K monitors', spec: 'S2725QC · USB-C · 120Hz · height-adjustable IPS display',
-    purpose: 'Four monitors, one for the DGX Spark, one for the Mac Studio, and one for each Mac mini.',
+    purpose: 'Four monitors, one for the Surface Laptop Ultra, one for the Mac Studio, and one for each Mac mini.',
     note: 'Each has two built-in 5W speakers, so separate speakers are removed. Includes a USB-C cable and a USB hub for peripherals.'
   },
   20: {
     title: 'Logitech Pebble 2 keyboard and mouse', spec: 'Bluetooth combo · Tonal Rose listing',
-    purpose: 'Four keyboard and mouse sets, one for the DGX Spark, one for the Mac Studio, and one for each Mac mini.',
+    purpose: 'Four keyboard and mouse sets, one for the Surface Laptop Ultra, one for the Mac Studio, and one for each Mac mini.',
     note: 'Each of the four computers has its own keyboard and mouse.'
   },
   21: {
@@ -85,9 +82,9 @@ const html = `<!doctype html>
   </header>
   <main id="main">
     <section class="intro" aria-labelledby="page-title">
-      <p class="eyebrow">Classroom equipment · September 2026</p>
+      <p class="eyebrow">Classroom equipment · November 2026</p>
       <h1 id="page-title">360 AIX hardware request</h1>
-      <p class="lead">A Mac Studio and DGX Spark for local large language model development, two Mac minis for iPhone development with Xcode, and four monitors with shared project equipment.</p>
+      <p class="lead">A Mac Studio and Surface Laptop Ultra with NVIDIA RTX Spark for local large language model development, two Mac minis for iPhone development with Xcode, and four monitors with shared project equipment.</p>
       <p class="date">Updated ${escape(data.revisionDate)}. All amounts in Canadian dollars.</p>
     </section>
 
@@ -96,7 +93,7 @@ const html = `<!doctype html>
       <div class="summary-detail"><span class="metric-label">Hardware budget</span><strong>${money(data.budgetCents)}</strong><span class="${gap > 0 ? 'over-budget' : 'within-budget'}">${money(Math.abs(gap))} ${gap > 0 ? 'above budget' : 'remaining in budget'}</span></div>
     </section>
 
-    <nav class="section-nav" aria-label="On this page"><a href="#equipment">Equipment &amp; links</a><a href="#budget">Cost breakdown</a><a href="#purchasing">Purchasing notes</a><a href="#alternatives">Optional alternatives</a></nav>
+    <nav class="section-nav" aria-label="On this page"><a href="#equipment">Equipment &amp; links</a><a href="#budget">Cost breakdown</a><a href="#purchasing">Purchasing notes</a></nav>
 
     <section id="equipment" aria-labelledby="equipment-title">
       <div class="section-heading"><div><p class="eyebrow">01 / Equipment</p><h2 id="equipment-title">What we’re requesting</h2></div><p>Unit and line prices are before tax.</p></div>
@@ -124,20 +121,12 @@ const html = `<!doctype html>
       <p class="eyebrow">03 / Purchasing</p><h2 id="purchasing-title">Notes for ordering</h2>
       <div class="notes-grid">
         <div><h3>School pricing</h3><p>Apple prices and configurations are the workbook’s public education benchmarks from ${escape(data.sourceDate)}. Obtain an institutional quote before ordering; the individual education store is not the school purchasing route.</p><p>${link('https://ecommerce.apple.com/asb2bstorefront/fys?country=CA&language=EN', 'Apple Education Institutions')}<br>${link('https://www.apple.com/ca/contact/', 'Apple purchasing contact')}<br>${link('https://www.apple.com/ca-edu/shop/help/policies', 'Apple education purchase policies')}</p></div>
-        <div><h3>Connections &amp; setup</h3><p>Connect the Mac displays with the included USB-C cables. Plug the Yeti microphones into the Dell USB-A hubs and the webcams directly into the minis. Use HDMI for the Spark display.</p><p>Four keyboard and mouse sets equip all four computers. The Spark also connects to the existing classroom network for shared access.</p></div>
-        <div><h3>Price &amp; availability</h3><p>All prices are planning estimates from the supplied workbook, revised ${escape(data.sourceDate)}. At that check, the non-Apple items were listed as in stock, orderable, or available to ship. Confirm prices, stock, shipping, and exact configurations with suppliers before ordering.</p><p>Dell’s built-in speakers were verified on ${escape(data.revisionDate)}. ${link(item(19).url, 'Dell specifications')}</p><p>${link('https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html', 'GST and PST reference')}</p></div>
+        <div><h3>Connections &amp; setup</h3><p>Connect the Mac displays with the included USB-C cables. Plug the Yeti microphones into the Dell USB-A hubs and the webcams directly into the minis. Use HDMI for the Surface Laptop Ultra’s external display.</p><p>Four keyboard and mouse sets equip all four computers. The Surface Laptop Ultra can connect to the existing classroom Wi-Fi for shared access.</p></div>
+        <div><h3>Price &amp; availability</h3><p>The Surface Laptop Ultra configuration is listed at ${money(item(16).unitCents)} before tax in Microsoft Canada’s configurator, checked ${escape(item(16).priceCheckedDate)}. All other prices remain the workbook’s planning estimates from ${escape(data.sourceDate)}. Confirm prices, stock, shipping, and exact configurations with suppliers before ordering.</p><p>Dell’s built-in speakers were verified on 27 September 2026. ${link(item(19).url, 'Dell specifications')}</p><p>${link('https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html', 'GST and PST reference')}</p></div>
       </div>
     </section>
 
-    <section id="alternatives" class="alternatives" aria-labelledby="alternatives-title">
-      <p class="eyebrow">04 / Optional alternatives</p><h2 id="alternatives-title">For consideration only</h2>
-      <p>This option is not included in the requested total above.</p>
-      <div class="alternatives-grid">
-        <article><h3>Used DGX Spark instead of new</h3><p>The workbook records a used “Like New” offer from Canada Direct on Amazon, checked 24 September, at <strong>${money(data.usedSparkCents)} before tax</strong>.</p><p>This would save ${money(item(16).unitCents - data.usedSparkCents)} before tax and bring the estimated request to <strong>${money(usedTotal)}</strong>, including tax. That leaves ${money(data.budgetCents - usedTotal)} within the hardware budget.</p><p>Confirm that the offer, exact configuration, condition, and warranty are still suitable before substituting.</p><p>${link(data.usedSparkUrl, 'View Amazon listing')}</p></article>
-      </div>
-      <p class="source-note">The workbook also considered reusing classroom displays. This request includes four new monitors as required, so that option is not applied.</p>
-    </section>
-    <footer><p>360 AIX · Shawnigan · Hardware purchasing request</p><p>Based on the supplied hardware workbook, revised ${escape(data.sourceDate)}. Budget, monitors, keyboard and mouse quantities, and speaker costs updated ${escape(data.revisionDate)}.</p></footer>
+    <footer><p>360 AIX · Shawnigan · Hardware purchasing request</p><p>Based on the supplied hardware workbook, revised ${escape(data.sourceDate)}, with subsequent requested changes. Surface Laptop Ultra configuration and budget updated ${escape(data.revisionDate)}.</p></footer>
   </main>
 </body>
 </html>`;
@@ -150,4 +139,4 @@ await writeFile(new URL('index.html', outputDirectory), html);
 for (const asset of ['styles.css', 'favicon.svg']) {
   await copyFile(new URL(asset, import.meta.url), new URL(asset, outputDirectory));
 }
-console.log(JSON.stringify({ subtotal, gst, pst, total, gap, usedTotal }));
+console.log(JSON.stringify({ subtotal, gst, pst, total, gap }));

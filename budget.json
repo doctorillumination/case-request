@@ -1,23 +1,22 @@
 {
   "source": "360-AIX-hardware-purchasing-plan.xlsx",
   "sourceDate": "25 September 2026",
-  "revisionDate": "27 September 2026",
+  "revisionDate": "1 November 2026",
   "currency": "CAD",
   "budgetCents": 3000000,
   "gstPercent": 5.0,
   "pstPercent": 7,
   "removedSpeakersCents": 6998,
-  "usedSparkCents": 799800,
-  "usedSparkUrl": "https://www.amazon.ca/dp/B0FWJ16CCH",
   "items": [
     {
       "sourceRow": 16,
-      "name": "NVIDIA DGX Spark, 128GB / 4TB",
+      "name": "Microsoft Surface Laptop Ultra, RTX Spark N1X 20CPU / 6144GPU, 128GB / 1TB",
       "quantity": 1,
-      "unitCents": 1049900,
-      "seller": "Canada Computers",
-      "sourceAvailability": "Available to ship",
-      "url": "https://www.canadacomputers.com/en/workstations/279129/nvidia-dgx-spark-ai-mini-pc-940-54242-0000-000-940-54242-0000-000.html"
+      "unitCents": 854999,
+      "seller": "Microsoft Canada",
+      "sourceAvailability": "Listed in Microsoft configurator on 1 November 2026",
+      "priceCheckedDate": "1 November 2026",
+      "url": "https://www.microsoft.com/en-ca/store/configure/surface-laptop-ultra/8wg5vqp0x4b8"
     },
     {
       "sourceRow": 17,

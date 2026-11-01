@@ -8,12 +8,13 @@ Based on `360-AIX-hardware-purchasing-plan.xlsx`, revised 25 September 2026. Har
 
 - Four computers, four new Dell S2725QC monitors, and four keyboard and mouse combos.
 - Separate Creative Pebble speakers removed because the Dell monitors include speakers.
-- Exact workbook configurations, planning prices, supplier links, and purchasing notes retained.
+- DGX Spark replaced on 1 November 2026 with a Microsoft Surface Laptop Ultra: NVIDIA RTX Spark N1X, 20-core CPU, 6,144-core GPU, 128GB unified memory, 1TB SSD, Nightfall, English keyboard, Windows 11 Pro. The Microsoft Canada configurator lists this configuration at $8,549.99 before tax, without trade-in credit or optional protection.
+- All other workbook configurations, planning prices, supplier links, and purchasing notes retained.
 - Totals recalculated from line items, with 5% GST and 7% PST. The $600 shipping and incidental reserve was removed as requested.
-- The hardware budget is $30,000, as requested on 27 September 2026, replacing the workbook's $29,000 figure. With four keyboard and mouse combos and no shipping reserve, the request is $29,899.36, leaving $100.64 in the budget.
-- The used-Spark alternative is separate from the main request. Reusing displays is not applied to the four required monitors. The optional additional Mac mini desk was removed as requested.
+- The hardware budget is $30,000. With the Surface Laptop Ultra, four keyboard and mouse combos, and no shipping reserve, the request is $27,716.47, leaving $2,283.53 in the budget.
+- The obsolete used-DGX alternative is removed. The optional additional Mac mini desk remains excluded.
 
-Prices are dated workbook estimates, not refreshed quotations. Dell's built-in speakers were verified against its product page on 27 September 2026. Apple configurations and public education prices need an institutional quote.
+The Surface Laptop Ultra price was checked in the [Microsoft Canada configurator](https://www.microsoft.com/en-ca/store/configure/surface-laptop-ultra/8wg5vqp0x4b8) on 1 November 2026. Other prices remain dated workbook estimates, not refreshed quotations. Dell's built-in speakers were verified against its product page on 27 September 2026. Apple configurations and public education prices need an institutional quote.
 
 ## Editing
 
